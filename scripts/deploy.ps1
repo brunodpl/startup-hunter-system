@@ -97,7 +97,7 @@ uv run python -m google.adk.cli deploy cloud_run `
     @sessionArgs `
     agents `
     -- `
-    --allow-unauthenticated `
+    --no-allow-unauthenticated `
     --memory=2Gi `
     --timeout=900 `
     --update-env-vars="GOOGLE_CLOUD_PROJECT=$project,GOOGLE_CLOUD_LOCATION=global" `

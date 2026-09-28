@@ -14,8 +14,6 @@ tmp/
 .adk/
 **/.adk/
 
-# [AI assistant] Code tooling (skills, local settings) — not part of the project
-.[AI assistant]/
 
 # Logs / coverage
 *.log

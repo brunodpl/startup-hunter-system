@@ -58,10 +58,10 @@ ignore = ["E501", "C901", "B006"]
 known-first-party = ["agents", "evals", "rag"]
 
 [tool.ty]
-python-version = "3.10"
+python-version = "3.11"
 
 [tool.ty.environment]
-python-version = "3.10"
+python-version = "3.11"
 
 [tool.ty.src]
 exclude = [".venv/**"]

@@ -13,6 +13,8 @@ tmp/
 # ADK local caches
 .adk/
 **/.adk/
+.claude/
+.firecrawl/
 
 
 # Logs / coverage

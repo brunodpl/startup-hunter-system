@@ -9,7 +9,12 @@ A multi-agent research system that turns an investment thesis into a prioritised
 3. A synthesiser brings the analyses together against the evaluation frameworks in `knowledge/`.
 4. A reporting agent ranks the results and produces a final report.
 
-The system uses Python, Google ADK and Vertex AI. Typed state connects the stages, while per-company failure isolation allows the remaining research to continue. Candidate limits, timeouts and quotas help control cost. Static evaluation frameworks are loaded directly, without a vector database.
+## Runtime, harness and tools
+
+- **Runtime:** Python and Google ADK run the agent pipeline, with Gemini models served through Vertex AI. The app can run locally through ADK's web interface or as an authenticated Cloud Run service. The deployment enables Cloud Trace and can persist sessions in Agent Engine.
+- **Harness:** an ADK `SequentialAgent` coordinates discovery, per-company analysis and reporting. For each company, research feeds a `ParallelAgent` with business model, metrics and market analysts; a synthesiser combines their outputs. Typed state and per-candidate checkpoints connect the stages. Failed research produces an insufficient-data result instead of a diagnosis, and failures are isolated per company.
+- **Tools:** the discovery agent calls `find_candidates`, which queries Google Search grounding via Vertex AI, Spanish startup sources via Firecrawl, the Y Combinator directory and GitHub concurrently, then deduplicates by domain. The research agent uses `fetch_url` and Firecrawl to extract website content. Evaluation frameworks are loaded from `knowledge/` into the synthesiser's context, without a vector database.
+- **Cost controls:** candidate limits, timeouts and quotas bound the work; retrieved page text is capped before it reaches the model.
 
 ## Run locally
 
